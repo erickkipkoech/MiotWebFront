@@ -1,3 +1,5 @@
+import { useRouter } from "next/router"
+
 export default function DashBoardLayout({
     children,
     }:{
@@ -6,6 +8,7 @@ export default function DashBoardLayout({
 
 )
 {
+    const router=useRouter()
     return <section>
         <nav></nav>
         {children}

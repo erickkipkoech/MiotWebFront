@@ -1,5 +1,7 @@
+"use client"
+
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { loginUser } from "../lib/auth";
 
 const Login = () => {
@@ -14,7 +16,8 @@ const Login = () => {
         setError(null);
 
         try {
-            await loginUser(username, password);
+            const data=await loginUser(username, password);
+            localStorage.setItem('token', data.response);
             router.push('/dashboard')
         } catch (error) {
             if (error instanceof Error)
